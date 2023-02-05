@@ -69,8 +69,11 @@ namespace ceaserCifr
             {
                 Is_key_correct(step);
                 Is_text_correct(text, al);
+
                 StringBuilder code = new StringBuilder();
+
                 BigInteger key = BigInteger.Parse(step);
+
 
                 for (int i = 0; i < text.Length; i++)
                 {
@@ -79,6 +82,7 @@ namespace ceaserCifr
                         if (Char.ToLower(text[i]) == al[j])
                         {
                             int ind = (int)((j + key) % al.Length);
+                            if (ind < 0) ind += al.Length; 
                             code.Append(al[ind]);
                             break;
                         }
